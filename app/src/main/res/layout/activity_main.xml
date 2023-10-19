@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="344dp"
+        android:layout_height="43dp"
+        android:layout_gravity="center"
+        android:text="Tosspay_URL"
+        android:textSize="18dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="60dp"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/tv_store"
+        android:layout_width="344dp"
+        android:layout_height="43dp"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:text="가게 이름"
+        android:textAlignment="center"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/tv_menu"
+        android:layout_width="344dp"
+        android:layout_height="43dp"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:text="메뉴"
+        android:textAlignment="center"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/tv_price"
+        android:layout_width="344dp"
+        android:layout_height="43dp"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:text="가격"
+        android:textAlignment="center"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/tv_duration"
+        android:layout_width="344dp"
+        android:layout_height="43dp"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:text="소요시간"
+        android:textAlignment="center"
+        android:textSize="25dp" />
+
+
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="130dp"
+        android:text="결제"
+        android:textAlignment="center" />
+
+
+</LinearLayout>

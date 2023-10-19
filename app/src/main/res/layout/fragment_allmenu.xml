@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Recommend.Basic_Recommend">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/button_shape"
+        android:gravity="center"
+        android:text="모든 메뉴 나열"
+        android:textAlignment="center"
+        android:textSize="24sp" />
+
+    <ListView
+        android:id="@+id/listview1"
+        android:layout_width="match_parent"
+        android:layout_height="677dp"
+        android:divider="@android:drawable/button_onoff_indicator_on"
+        android:dividerHeight="10px"
+        android:drawSelectorOnTop="false" />
+
+</LinearLayout>
+
+
+    <!--.................................................................-->
+    <!-- 위에 추가한 아이디 설정 코딩
+        android:id="@android:id/list"-->

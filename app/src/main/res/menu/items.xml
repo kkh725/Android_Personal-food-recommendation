@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/itme1"
+        android:icon="@drawable/ic_baseline_restaurant_24"
+        android:title="아이템1"
+        android:enabled="true"/>
+
+    <item
+        android:id="@+id/itme2"
+        android:icon="@drawable/ic_baseline_lunch_dining_24"
+        android:iconTint="@color/white"
+        android:title="아이템1"
+        android:enabled="true"/>
+
+    <item
+        android:id="@+id/itme3"
+        android:icon="@drawable/ic_baseline_restaurant_24"
+        android:title="아이템1"
+        android:enabled="true"/>
+
+
+</menu>

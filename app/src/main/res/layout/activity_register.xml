@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login.Register">
+
+    <EditText
+        android:id="@+id/Et_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="99dp"
+        android:layout_marginTop="90dp"
+        android:layout_marginEnd="102dp"
+        android:ems="10"
+        android:background="@drawable/shape_rectangle"
+        android:hint="  이름"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+
+        android:id="@+id/Spinner_age"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="1dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Et_name" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="151dp"
+        android:layout_marginTop="49dp"
+        android:layout_marginEnd="151dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Spinner_age">
+
+        <RadioButton
+            android:id="@+id/radio_male"
+
+            android:layout_width="95dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_rectangle"
+            android:text="남성" />
+
+        <RadioButton
+            android:id="@+id/radio_female"
+            android:layout_width="95dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_rectangle"
+            android:text="여성" />
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/et_residence"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="47dp"
+        android:layout_marginEnd="101dp"
+        android:ems="10"
+        android:hint="  거주지 - 예) 서울시"
+        android:background="@drawable/shape_rectangle"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+    <EditText
+        android:id="@+id/et_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="69dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginBottom="34dp"
+        android:background="@drawable/shape_rectangle"
+        android:ems="10"
+        android:hint="  주소 입력"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/btn_complete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_complete"
+        android:layout_width="144dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="166dp"
+        android:layout_marginEnd="157dp"
+        android:layout_marginBottom="71dp"
+        android:background="@drawable/button_shape"
+        android:text="완료"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.589"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
