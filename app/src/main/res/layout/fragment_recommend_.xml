@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F7F8FA"
     android:orientation="vertical"
     tools:context=".Recommend.Basic_Recommend">
 
@@ -12,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:background="@drawable/button_shape"
+        android:fontFamily="@font/ibmplexsanskrregular"
         android:gravity="center"
         android:text="주소"
         android:textAlignment="center"
@@ -21,7 +23,7 @@
         android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="677dp"
-        android:divider="@android:drawable/button_onoff_indicator_on"
+        android:divider="@null"
         android:dividerHeight="10px"
         android:drawSelectorOnTop="false" />
 

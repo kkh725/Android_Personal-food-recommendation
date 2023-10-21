@@ -114,12 +114,12 @@ public class Recommend_Fragment extends Fragment {
 //        }
         listView = view.findViewById(R.id.list);
         listViewAdapter = new ListViewAdapter();
-        listViewAdapter.addItem(getResources().getDrawable(R.drawable.ic_baseline_restaurant_24), Store_arr[0], "혼잡도 : " + Store_Status.get(Store_arr[0]));
-        listViewAdapter.addItem(getResources().getDrawable(R.drawable.ic_baseline_restaurant_24), Store_arr[1], "혼잡도 : " + Store_Status.get(Store_arr[1]));
-        listViewAdapter.addItem(getResources().getDrawable(R.drawable.ic_baseline_restaurant_24), Store_arr[2], "혼잡도 : " + Store_Status.get(Store_arr[2]));
-        listViewAdapter.addItem(getResources().getDrawable(R.drawable.ic_baseline_restaurant_24), Store_arr[3], "혼잡도 : " + Store_Status.get(Store_arr[3]));
-        listViewAdapter.addItem(getResources().getDrawable(R.drawable.ic_baseline_restaurant_24), Store_arr[4], "혼잡도 : " + Store_Status.get(Store_arr[4]));
-        listViewAdapter.addItem(getResources().getDrawable(R.drawable.ic_baseline_restaurant_24), Store_arr[5], "혼잡도 : " + Store_Status.get(Store_arr[5]));
+        listViewAdapter.addItem(getResources().getDrawable(R.drawable.fluentfood20regular), Store_arr[0], "혼잡도 : " + Store_Status.get(Store_arr[0]));
+        listViewAdapter.addItem(getResources().getDrawable(R.drawable.fluentfood20regular), Store_arr[1], "혼잡도 : " + Store_Status.get(Store_arr[1]));
+        listViewAdapter.addItem(getResources().getDrawable(R.drawable.fluentfood20regular), Store_arr[2], "혼잡도 : " + Store_Status.get(Store_arr[2]));
+        listViewAdapter.addItem(getResources().getDrawable(R.drawable.fluentfood20regular), Store_arr[3], "혼잡도 : " + Store_Status.get(Store_arr[3]));
+        listViewAdapter.addItem(getResources().getDrawable(R.drawable.fluentfood20regular), Store_arr[4], "혼잡도 : " + Store_Status.get(Store_arr[4]));
+        listViewAdapter.addItem(getResources().getDrawable(R.drawable.fluentfood20regular), Store_arr[5], "혼잡도 : " + Store_Status.get(Store_arr[5]));
 
         listView.setAdapter(listViewAdapter);
 
