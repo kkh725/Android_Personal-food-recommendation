@@ -22,7 +22,7 @@ public class Naver_API {
 
     String apiUrl;
 
-    public Object[] geocode(String location) {
+    public String geocode(String location) {
         String x = "널";
         String y = "널";
 
@@ -45,9 +45,9 @@ public class Naver_API {
             JSONObject jsonObject1 = new JSONObject(jsonArray.getString(0));
             x = jsonObject1.getString("x");
             y = jsonObject1.getString("y");
-            Log.d("경도 // 위도 ", x + " " + y);
+            Log.d("경도 // 위도 ", x + ", " + y);
 
-            return new Object[] {x,y};
+            return x + ", " + y;
 
         } catch (ExecutionException e) {
             e.printStackTrace();
@@ -56,7 +56,7 @@ public class Naver_API {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return new Object[] {x,y};
+        return x + ", " + y;
     }
 
 
@@ -64,7 +64,7 @@ public class Naver_API {
      * 시작 좌표 -> 도착 좌표의 걸리는 시간 및 km 찾기.
      */
     public Object[] duration_distance(String startLocation, String goalLocation) {
-        startLocation = "127.726137, 37.864515"; // 출발점
+//        startLocation = "127.726137, 37.864515"; // 출발점
          //도착점
         try {
             apiUrl = "https://naveropenapi.apigw.ntruss.com/map-direction/v1/driving?" +

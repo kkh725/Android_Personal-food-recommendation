@@ -1,38 +1,28 @@
 package com.example.toss_test.fragment;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.example.toss_test.List.ListViewAdapter;
 import com.example.toss_test.List.ListViewItem;
-import com.example.toss_test.Login.Login;
 import com.example.toss_test.MainActivity;
+import com.example.toss_test.Map.Gps;
+import com.example.toss_test.Map.Naver_API;
 import com.example.toss_test.R;
-import com.example.toss_test.Recommend.Detail_Recommend;
-import com.example.toss_test.etc.Check_Address;
 import com.example.toss_test.etc.HttpWebSocket;
 
-import java.io.IOException;
 import java.util.HashMap;
-import java.util.concurrent.ExecutionException;
-
-import okhttp3.FormBody;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 
 public class Recommend_Fragment extends Fragment {
 
@@ -40,9 +30,9 @@ public class Recommend_Fragment extends Fragment {
     TextView tv_address;
     public static ListViewAdapter listViewAdapter;
     public static ListView listView;
-    String store, menu, congestion, duration;
+    String store, menu, congestion, duration, to_home_text;
     Button btn_recycle;
-    public static HashMap<String, String> Store_Status = new HashMap<String, String>();
+    public static HashMap<String, String> Store_Status = new HashMap<String, String>(); //가게들의 실시간 혼잡도를 받아오는 hashmap.
     public static String[] Store_arr = new String[5]; // api를 통해 받아올 가게 빈도수 5가지
     public static String[] Menu_arr = new String[5]; // api를 통해 받아올 메뉴 빈도수 5가지
 
@@ -61,6 +51,33 @@ public class Recommend_Fragment extends Fragment {
         tv_address = view.findViewById(R.id.tv_address);
         tv_address.setText("세종특별자치시 조치원읍 신안리 354-2");
 
+        /**
+         * 로그인 했을때 데이터베이스에서 뽑아온 사용자의 주소를
+         * x,y 좌표로 변환하기.
+         */
+        Naver_API naver_api = new Naver_API();
+        String home_location = naver_api.geocode(tv_address.getText().toString());
+        Log.d("도착지점 좌표",home_location);
+
+        /**
+         * 사용자의 현재 location 사용하기.
+         * 지금은 내 집의 위치가 나오므로 잠시 테스트용 코드수정
+         *
+         Gps gps = new Gps((AppCompatActivity) getContext());
+         gps.requestLocationUpdates();
+         String start_location = gps.getLongitude()  + ", " + gps.getLatitude();
+         Log.d("실시간 현재좌표",start_location);
+         */
+
+        // 실시간 위치에서부터 집까지의 시간 계산하기.
+
+        String start_location = "127.2646, 36.4851";
+        String time_to_home = naver_api.duration_distance(start_location,home_location)[0].toString();
+        Log.d("거리 시간",time_to_home);
+
+
+
+//      to_home_text = naver_api.duration_distance();
 
         HttpWebSocket httpWebSocket = new HttpWebSocket();
         httpWebSocket.sendWebSocketMessage("consumer");

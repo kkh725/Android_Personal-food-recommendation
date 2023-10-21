@@ -1,18 +1,16 @@
 package com.example.toss_test.Map;
 
-import static androidx.constraintlayout.motion.widget.Debug.getLocation;
-
-import android.content.Context;
+import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
+import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,94 +19,69 @@ import androidx.core.content.ContextCompat;
 
 import com.example.toss_test.R;
 
-public class Gps extends AppCompatActivity {
+public class Gps {
 
-    private Button button1;
+    private final AppCompatActivity activity;
+    private final LocationManager locationManager;
+    private LocationListener gpsLocationListener;
+
     private TextView txtResult;
-    private Location location;
+    private double latitude;
+    private double longitude;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gps); //이거아님@@@@@@@@@@@@@@@@@@@@@ 메인엑티비티임
-        button1 = (Button)findViewById(R.id.btn1);
-        txtResult = (TextView)findViewById(R.id.txtResult);
+    public Gps(AppCompatActivity activity) {
+        this.activity = activity;
+        this.locationManager = (LocationManager) activity.getSystemService(Context.LOCATION_SERVICE);
 
-        final LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        txtResult = activity.findViewById(R.id.txtResult);
 
-        button1.setOnClickListener(new View.OnClickListener() {
+        gpsLocationListener = new LocationListener() {
             @Override
-            public void onClick(View v) {
-                if ( Build.VERSION.SDK_INT >= 23 &&
-                        ContextCompat.checkSelfPermission( getApplicationContext(), android.Manifest.permission.ACCESS_FINE_LOCATION ) != PackageManager.PERMISSION_GRANTED ) {
-                    ActivityCompat.requestPermissions( Gps.this, new String[] {  android.Manifest.permission.ACCESS_FINE_LOCATION  },
-                            0 ); //퍼미션 있는지 체크?
-                }
-                else{
+            public void onLocationChanged(@NonNull Location location) {
+                longitude = location.getLongitude();
+                latitude = location.getLatitude();
 
-                    getLocation();
-                    location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-
-                    if (location != null){
-                        String provider = location.getProvider();
-                        double longitude = location.getLongitude();
-                        double latitude = location.getLatitude();
-                        double altitude = location.getAltitude();
-
-                        txtResult.setText("위치정보 : " + provider + "\n" +
-                                "위도 : " + longitude + "\n" +
-                                "경도 : " + latitude + "\n" +
-                                "고도  : " + altitude);
-
-                        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER,
-                                1000,
-                                1,
-                                gpsLocationListener);
-                        lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,
-                                0,
-                                0,
-                                new LocationListener() {
-                                    @Override
-                                    public void onLocationChanged(@NonNull Location location) {
-
-                                    }
-                                });
-                    }
-                    else{
-                        location = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-
-                        Log.d("fail","fail");
-                    }
-
-
-
-                }
             }
-        });
 
+            @Override
+            public void onStatusChanged(String provider, int status, Bundle extras) {
+            }
+
+            @Override
+            public void onProviderEnabled(String provider) {
+            }
+
+            @Override
+            public void onProviderDisabled(String provider) {
+            }
+        };
     }
-    final LocationListener gpsLocationListener = new LocationListener() {
-        public void onLocationChanged(Location location) {
 
-            String provider = location.getProvider();
-            double longitude = location.getLongitude();
-            double latitude = location.getLatitude();
-            double altitude = location.getAltitude();
+    public double getLatitude() {
+        return latitude;
+    }
 
-            txtResult.setText("위치정보 : " + provider + "\n" +
-                    "위도 : " + longitude + "\n" +
-                    "경도 : " + latitude + "\n" +
-                    "고도  : " + altitude);
+    public double getLongitude() {
+        return longitude;
+    }
 
+    public void requestLocationUpdates() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M &&
+                ContextCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 0);
+        } else {
+            Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+
+            if (location != null) {
+                longitude = location.getLongitude();
+                latitude = location.getLatitude();
+
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 1, gpsLocationListener);
+                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, gpsLocationListener);
+            } else {
+                location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                Log.d("fail", "fail");
+            }
         }
-
-        public void onStatusChanged(String provider, int status, Bundle extras) {
-        }
-
-        public void onProviderEnabled(String provider) {
-        }
-
-        public void onProviderDisabled(String provider) {
-        }
-    };
+    }
 }
