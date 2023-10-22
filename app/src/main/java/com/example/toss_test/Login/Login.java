@@ -1,5 +1,6 @@
 package com.example.toss_test.Login;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -10,6 +11,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -178,6 +180,9 @@ public class Login extends AppCompatActivity {
                     /**
                      * 로그인 성공했을때 서버로 멤버키 보내기.
                      * 준혁씨 서버 열려야 가능
+                     * 보낸 다음 5가지 추천메뉴를 로그인화면에서 받아오기.
+                     * 받아오는 과정에서 로딩화면 띄워주기.
+                     * 이 코드 말고 스레드 사용한 코드로 바꾸기.
                      */
 //                    Url = "http://3.39.230.197:8000/members/"+Member_key;
 //                    try {
@@ -190,11 +195,20 @@ public class Login extends AppCompatActivity {
 //                    }
 
 
+                    /**
+                     * 다섯가지 추천 받아오는 칸.
+                     * 추천한다는 화면 띄워줌
+                     */
+                    Get_Recommend_Thread get_recommend_thread = new Get_Recommend_Thread(new Handler());
+                    get_recommend_thread.showLoadingDialog();
+                    get_recommend_thread.start();
+
                     Intent intent_toOrder = new Intent(Login.this, Basic_Recommend.class);
                     startActivity(intent_toOrder);
                     Toast.makeText(Login.this, "로그인"+Member_key, Toast.LENGTH_SHORT).show();
                 }
                 else{
+
                     Toast.makeText(Login.this, "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
 
                 }
@@ -213,7 +227,10 @@ public class Login extends AppCompatActivity {
 
         }
 
-
+    /**
+     * 아이디 비밀번호 체크하고
+     * 데이터베이스 확인 후 로그인시키기. true값이면 로그인
+     */
     private class Check_Database extends AsyncTask<String, Void, String> {
 
         OkHttpClient client = new OkHttpClient();
@@ -242,6 +259,64 @@ public class Login extends AppCompatActivity {
             return result;
         }
 
+    }
+
+    /**
+     * 로그인 한 후 멤버키값 보내고
+     * 5가지 추천 받아오기? 스레드로 테스트.
+     */
+    private class Get_Recommend_Thread extends Thread{
+        private Handler handler;
+        AlertDialog customLoadingDialog;
+
+        public Get_Recommend_Thread (Handler handler){
+            this.handler = handler;
+        }
+
+        @Override
+        public void run(){
+            /**
+             * 백그라운드에서 수행할 작업. 비동기
+             */
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            runOnUiThread(new Runnable() {
+                /**
+                 * ui스레드에서 작업할 내용 작성.
+                 * runOnUIThread 대신에 handler.post(new runnable){}도 사용 가능하다.
+                 * runonui는 ui 스레드에서 변경될점 위주로 사용. handler는 데이터이동같은 부분에서 사용한다.
+                 */
+                @Override
+                public void run() {
+                    hideLoadingDialog();
+                }
+            });
+
+        }
+
+        private void showLoadingDialog(){
+            /**
+             * 작업이 시작되기 직전 ui 변경점.
+             */
+            View loading = getLayoutInflater().inflate(R.layout.loading,null);
+
+            AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(Login.this);
+            dialogBuilder.setView(loading);
+            customLoadingDialog = dialogBuilder.create();
+            customLoadingDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+            customLoadingDialog.show(); // 로딩 시작
+        }
+
+        private void hideLoadingDialog(){
+            /**
+             * 작업이 완료된 후 ui 변경점.
+             */
+            customLoadingDialog.dismiss(); // 로딩 완료
+        }
     }
 }
 

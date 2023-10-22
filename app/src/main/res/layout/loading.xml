@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@null"
+    android:gravity="center">
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:indeterminateTint="@color/white"
+        android:indeterminate="false" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:fontFamily="@font/ibmplexsanskrregular"
+        android:layout_width="match_parent"
+        android:layout_height="87dp"
+        android:textColor="@color/white"
+        android:layout_gravity="center"
+        android:text="사용자에게 맞는 음식 추천을\n진행중입니다 . ."
+        android:textAlignment="center"
+        android:textSize="20dp" />
+
+
+</LinearLayout>
