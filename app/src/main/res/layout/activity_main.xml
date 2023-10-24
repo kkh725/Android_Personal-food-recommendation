@@ -9,65 +9,162 @@
 
 
     <TextView
-        android:id="@+id/tv1"
-        android:layout_width="344dp"
-        android:layout_height="43dp"
-        android:layout_gravity="center"
-        android:text="Tosspay_URL"
-        android:textSize="18dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="60dp"
-        android:textAlignment="center" />
-
-    <TextView
         android:id="@+id/tv_store"
-        android:layout_width="344dp"
+        android:layout_width="match_parent"
         android:layout_height="43dp"
         android:layout_gravity="center"
         android:layout_margin="20dp"
+        android:fontFamily="@font/ibmplexsanskrregular"
         android:text="가게 이름"
-        android:textAlignment="center"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="#D9D9D9" />
+
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="170dp"
+        android:layout_marginLeft="20dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/chicken" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tv_menu3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/ibmplexsanskrregular"
+                android:text="메뉴"
+                android:textSize="17dp" />
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/ibmplexsanskrregular"
+                android:text="가격"
+                android:textAlignment="textStart"
+                android:textSize="17dp" />
+
+
+
+        </LinearLayout>
+
+
+
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="#D9D9D9" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="60dp"
+            android:fontFamily="@font/ibmplexsanskrregular"
+            android:text="배달 예상 소요시간"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/tv_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="10dp"
+            android:text="소요시간"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+
+            />
+
+
+    </LinearLayout>
+
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="#D9D9D9"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp">
+
+        <TextView
+            android:id="@+id/tv_go_to_home"
+            android:layout_width="wrap_content"
+            android:layout_height="43dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:fontFamily="@font/ibmplexsanskrregular"
+            android:text="귀가 예상 소요시간"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/tv_to_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="10dp"
+            android:text="소요시간"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+    </LinearLayout>
+
+
 
     <TextView
-        android:id="@+id/tv_menu"
-        android:layout_width="344dp"
-        android:layout_height="43dp"
-        android:layout_gravity="center"
-        android:layout_margin="20dp"
-        android:text="메뉴"
+        android:id="@+id/tv_time_guide"
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:layout_marginTop="25dp"
+        android:text="귀가 시간에 알맞게 배달 받을 수 있어요"
+        android:textSize="20dp"
+        android:textColor="@color/black"
         android:textAlignment="center"
-        android:textSize="25dp" />
-
-    <TextView
-        android:id="@+id/tv_price"
-        android:layout_width="344dp"
-        android:layout_height="43dp"
-        android:layout_gravity="center"
-        android:layout_margin="20dp"
-        android:text="가격"
-        android:textAlignment="center"
-        android:textSize="25dp" />
-
-    <TextView
-        android:id="@+id/tv_duration"
-        android:layout_width="344dp"
-        android:layout_height="43dp"
-        android:layout_gravity="center"
-        android:layout_margin="20dp"
-        android:text="소요시간"
-        android:textAlignment="center"
-        android:textSize="25dp" />
-
+        android:gravity="center"
+        android:background="#F3E2E2" />
 
     <Button
         android:id="@+id/btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="83dp"
         android:layout_gravity="center"
-        android:layout_marginTop="130dp"
-        android:text="결제"
-        android:textAlignment="center" />
+        android:background="#FF5722"
+        android:fontFamily="@font/ibmplexsanskrregular"
+        android:text="배달 결제하기"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20dp" />
 
 
 </LinearLayout>

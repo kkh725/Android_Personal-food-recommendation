@@ -1,5 +1,8 @@
 package com.example.toss_test.Login;
 
+import static com.example.toss_test.fragment.Recommend_Fragment.Menu_arr;
+import static com.example.toss_test.fragment.Recommend_Fragment.Store_arr;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -67,7 +70,7 @@ public class Login extends AppCompatActivity {
 
     Button btn_login , btn_register;
     EditText Et_id, Et_pw;
-    String Id, Pw, Check, Url;
+    private String Id, Pw, Check, Url;
     ProgressBar progressBar;
     public static String Status,Member_key;
 
@@ -178,37 +181,17 @@ public class Login extends AppCompatActivity {
                     Member_key = split_check[1];
 
                     /**
-                     * 로그인 성공했을때 서버로 멤버키 보내기.
-                     * 준혁씨 서버 열려야 가능
-                     * 보낸 다음 5가지 추천메뉴를 로그인화면에서 받아오기.
-                     * 받아오는 과정에서 로딩화면 띄워주기.
-                     * 이 코드 말고 스레드 사용한 코드로 바꾸기.
-                     */
-//                    Url = "http://3.39.230.197:8000/members/"+Member_key;
-//                    try {
-//                        String result = new OkhttpClient_Get().execute(Url).get();
-//                        Log.d("멤버키 보내고 받아오기 ",result);
-//                    } catch (ExecutionException e) {
-//                        e.printStackTrace();
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-
-
-                    /**
+                     * 로그인 후 서버로 멤버키를 보내서 다섯가지 추천을 받아온다.
                      * 다섯가지 추천 받아오는 칸.
                      * 추천한다는 화면 띄워줌
                      */
+                    Url = "http://3.39.230.197:8000/re/"+Member_key;
                     Get_Recommend_Thread get_recommend_thread = new Get_Recommend_Thread(new Handler());
                     get_recommend_thread.showLoadingDialog();
                     get_recommend_thread.start();
 
-                    Intent intent_toOrder = new Intent(Login.this, Basic_Recommend.class);
-                    startActivity(intent_toOrder);
-                    Toast.makeText(Login.this, "로그인"+Member_key, Toast.LENGTH_SHORT).show();
                 }
                 else{
-
                     Toast.makeText(Login.this, "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show();
 
                 }
@@ -243,7 +226,8 @@ public class Login extends AppCompatActivity {
                     .add("Pw",params[1])
                     .build();
 
-            Request request = new Request.Builder().url("http://221.158.178.99:8081/DBMS_COnnection/android/Login.jsp")
+            Request request = new Request.Builder()
+                    .url("http://221.158.178.99:8081/DBMS_COnnection/android/Login.jsp")
                     .post(formBody)
                     .build();
             try {
@@ -263,11 +247,12 @@ public class Login extends AppCompatActivity {
 
     /**
      * 로그인 한 후 멤버키값 보내고
-     * 5가지 추천 받아오기? 스레드로 테스트.
+     * 5가지 추천 받아오기
      */
     private class Get_Recommend_Thread extends Thread{
-        private Handler handler;
+        Handler handler;
         AlertDialog customLoadingDialog;
+        String result;
 
         public Get_Recommend_Thread (Handler handler){
             this.handler = handler;
@@ -275,6 +260,40 @@ public class Login extends AppCompatActivity {
 
         @Override
         public void run(){
+            OkHttpClient client = new OkHttpClient();
+            Request request = new Request.Builder().url(Url)
+                    .build();
+            try {
+                Response response = client.newCall(request).execute();
+                result = response.body().string();
+                String parse[] = result.split(",");
+                Log.d("추천 결과",parse[0]);
+                /**
+                 * 추천받아 들어온 다섯가지 가게와 메뉴를
+                 * 가게/메뉴로 분리해서 배열에 넣는다. ,으로 한번자르고 :으로 두번잘라서 파싱함
+                 * trim()메서드는 문자열 앞뒤의 공백 지우는 메서드
+                 */
+
+                for (int i = 0; i < parse.length; i++) {
+                    String[] parts = parse[i].split(":");
+                    if (parts.length == 2) {
+                        Store_arr[i] = parts[0].trim();
+                        Menu_arr[i] = parts[1].trim();
+                        if (Store_arr[i].contains("\"")) {
+                            Store_arr[i]=Store_arr[i].replace("\"","");
+                        }
+                        if(Menu_arr[i].contains("\"")){
+                            Menu_arr[i]=Menu_arr[i].replace("\"","");
+                        }
+                        Log.d("추천2","추천" + Store_arr[i]+"///"+Menu_arr[i]);
+                    }
+                }
+
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             /**
              * 백그라운드에서 수행할 작업. 비동기
              */
@@ -316,6 +335,9 @@ public class Login extends AppCompatActivity {
              * 작업이 완료된 후 ui 변경점.
              */
             customLoadingDialog.dismiss(); // 로딩 완료
+            Intent intent_toOrder = new Intent(Login.this, Basic_Recommend.class);
+            startActivity(intent_toOrder);
+            Toast.makeText(Login.this, "로그인"+Member_key, Toast.LENGTH_SHORT).show();
         }
     }
 }

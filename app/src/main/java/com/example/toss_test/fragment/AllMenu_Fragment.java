@@ -30,14 +30,14 @@ public class AllMenu_Fragment extends Fragment {
         ListView listView = view.findViewById(R.id.listview1);
 
         listViewAdapter = new ListViewAdapter();
-        listViewAdapter.addItem(getResources().getDrawable(R.drawable.ic_baseline_restaurant_24), "가게 이름 1", "음식 이름 1");
-        listViewAdapter.addItem(getResources().getDrawable(R.drawable.ic_baseline_restaurant_24), "가게 이름 2", "음식 이름 2");
-        listViewAdapter.addItem(getResources().getDrawable(R.drawable.ic_baseline_restaurant_24), "가게 이름 3", "음식 이름 3");
-        listViewAdapter.addItem(getResources().getDrawable(R.drawable.ic_baseline_restaurant_24), "가게 이름 4", "음식 이름 4");
-        listViewAdapter.addItem(getResources().getDrawable(R.drawable.ic_baseline_restaurant_24), "가게 이름 5", "음식 이름 5");
-        listViewAdapter.addItem(getResources().getDrawable(R.drawable.ic_baseline_restaurant_24), "가게 이름 6", "음식 이름 6");
-        listViewAdapter.addItem(getResources().getDrawable(R.drawable.ic_baseline_restaurant_24), "가게 이름 7", "음식 이름 7");
-        listViewAdapter.addItem(getResources().getDrawable(R.drawable.ic_baseline_restaurant_24), "가게 이름 8", "음식 이름 8");
+        listViewAdapter.addItem(getResources().getDrawable(R.drawable.fluentfood20regular), "가게 이름 1", "음식 이름 1");
+        listViewAdapter.addItem(getResources().getDrawable(R.drawable.fluentfood20regular), "가게 이름 2", "음식 이름 2");
+        listViewAdapter.addItem(getResources().getDrawable(R.drawable.fluentfood20regular), "가게 이름 3", "음식 이름 3");
+        listViewAdapter.addItem(getResources().getDrawable(R.drawable.fluentfood20regular), "가게 이름 4", "음식 이름 4");
+        listViewAdapter.addItem(getResources().getDrawable(R.drawable.fluentfood20regular), "가게 이름 5", "음식 이름 5");
+        listViewAdapter.addItem(getResources().getDrawable(R.drawable.fluentfood20regular), "가게 이름 6", "음식 이름 6");
+        listViewAdapter.addItem(getResources().getDrawable(R.drawable.fluentfood20regular), "가게 이름 7", "음식 이름 7");
+        listViewAdapter.addItem(getResources().getDrawable(R.drawable.fluentfood20regular), "가게 이름 8", "음식 이름 8");
         listView.setAdapter(listViewAdapter);
 
 

@@ -83,6 +83,7 @@ public class Naver_API {
             String route = jsonObject.getString("route");
             Log.d("경로 / 1번 파싱", route);
 
+
             JSONObject jsonObject1 = new JSONObject(route);
             JSONArray jsonArray = jsonObject1.getJSONArray("traoptimal");
             Log.d("최적의 경로 / 2번파싱", jsonArray.getString(0));

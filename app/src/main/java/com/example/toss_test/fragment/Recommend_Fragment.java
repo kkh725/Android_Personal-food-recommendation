@@ -1,7 +1,11 @@
 package com.example.toss_test.fragment;
 
+import static com.example.toss_test.MainActivity.price;
+
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,7 +26,14 @@ import com.example.toss_test.Map.Naver_API;
 import com.example.toss_test.R;
 import com.example.toss_test.etc.HttpWebSocket;
 
+import java.io.IOException;
 import java.util.HashMap;
+
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class Recommend_Fragment extends Fragment {
 
@@ -30,7 +41,8 @@ public class Recommend_Fragment extends Fragment {
     TextView tv_address;
     public static ListViewAdapter listViewAdapter;
     public static ListView listView;
-    String store, menu, congestion, duration, to_home_text;
+    String store, congestion, duration;
+    public static String to_home_text;
     Button btn_recycle;
     public static HashMap<String, String> Store_Status = new HashMap<String, String>(); //가게들의 실시간 혼잡도를 받아오는 hashmap.
     public static String[] Store_arr = new String[5]; // api를 통해 받아올 가게 빈도수 5가지
@@ -39,14 +51,6 @@ public class Recommend_Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_recommend_, container, false);
-
-        Store_arr = new String[] {"BBQ치킨 조치원점 (Express)","BHC치킨 조치원점","지코바치킨 조치원점","store4","store5","store6"};
-        Store_Status.put("BBQ치킨 조치원점 (Express)","0");
-        Store_Status.put("BHC치킨 조치원점","0");
-        Store_Status.put("지코바치킨 조치원점","0");
-        Store_Status.put("store4","0");
-        Store_Status.put("store5","0");
-        Store_Status.put("store6","0");
 
         tv_address = view.findViewById(R.id.tv_address);
         tv_address.setText("세종특별자치시 조치원읍 신안리 354-2");
@@ -71,10 +75,9 @@ public class Recommend_Fragment extends Fragment {
 
         // 실시간 위치에서부터 집까지의 시간 계산하기.
 
-        String start_location = "127.2646, 36.4851";
-        String time_to_home = naver_api.duration_distance(start_location,home_location)[0].toString();
-        Log.d("거리 시간",time_to_home);
-
+        String start_location = "127.2646, 36.4851"; //어딘지 모르겠음
+        to_home_text = naver_api.duration_distance(start_location,home_location)[0].toString();
+        Log.d("거리 시간",to_home_text);
 
 
 //      to_home_text = naver_api.duration_distance();
@@ -105,21 +108,16 @@ public class Recommend_Fragment extends Fragment {
          * 이곳에서 빈도수로 받아오기.
          * 탑5 받아오는 부분
          */
-
-        listViewAdapter = new ListViewAdapter();
-
-//        for(int i=0; i<5; i++){
-//            listViewAdapter.addItem(getResources().getDrawable(R.drawable.ic_baseline_restaurant_24),
-//                    "가게 "+String.valueOf(i)+"번","음식 "+String.valueOf(i)+"번");
-//        }
         listView = view.findViewById(R.id.list);
         listViewAdapter = new ListViewAdapter();
-        listViewAdapter.addItem(getResources().getDrawable(R.drawable.fluentfood20regular), Store_arr[0], "혼잡도 : " + Store_Status.get(Store_arr[0]));
-        listViewAdapter.addItem(getResources().getDrawable(R.drawable.fluentfood20regular), Store_arr[1], "혼잡도 : " + Store_Status.get(Store_arr[1]));
-        listViewAdapter.addItem(getResources().getDrawable(R.drawable.fluentfood20regular), Store_arr[2], "혼잡도 : " + Store_Status.get(Store_arr[2]));
-        listViewAdapter.addItem(getResources().getDrawable(R.drawable.fluentfood20regular), Store_arr[3], "혼잡도 : " + Store_Status.get(Store_arr[3]));
-        listViewAdapter.addItem(getResources().getDrawable(R.drawable.fluentfood20regular), Store_arr[4], "혼잡도 : " + Store_Status.get(Store_arr[4]));
-        listViewAdapter.addItem(getResources().getDrawable(R.drawable.fluentfood20regular), Store_arr[5], "혼잡도 : " + Store_Status.get(Store_arr[5]));
+
+        for(int i=0; i<5; i++){
+            Store_Status.put(Store_arr[i], "혼잡도 : 보통");
+            listViewAdapter.addItem(getResources().getDrawable(R.drawable.fluentfood20regular),
+                    Store_arr[i]+"\n"+ Menu_arr[i], Store_Status.get(Store_arr[i]));
+        }
+        listViewAdapter.addItem(getResources().getDrawable(R.drawable.fluentfood20regular),
+                "마라순코우 마라탕\n마라샹궈", "혼잡도 : 혼잡");
 
         listView.setAdapter(listViewAdapter);
 
@@ -130,26 +128,94 @@ public class Recommend_Fragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getContext(), MainActivity.class);
+
 
                 ListViewItem clickedItem = (ListViewItem) parent.getItemAtPosition(position);
-                menu = clickedItem.getTitle(); //국밥
-                duration = clickedItem.getDesc(); //리스트에선 혼잡도
-                duration = "소요시간 40분";
+                MainActivity.menu = Menu_arr[position]; //국밥
+                Log.d("메뉴명",MainActivity.menu);
+                duration = Store_Status.get(Store_arr[position]); //리스트에선 혼잡도 배달 거리 시간 구해오기
+                //조리시간 구해와서 혼잡도에 더하기.
+                store = Store_arr[position];
                 String price = "11900"; //가격은 데이터베이스에서 찾아오기.
 
-                intent.putExtra("store", store);
-                intent.putExtra("menu", menu);
-                intent.putExtra("duration", duration);
-                intent.putExtra("price", price);
-                /**
-                 * 결제 정보로 넘길때 혼잡도, 걸리는시간 메뉴 등 정보 다 넣어두기.
-                 */
-                startActivity(intent);
+                String url = "http://221.158.178.99:8081/DBMS_COnnection/android/Cookingtime.jsp";
+
+                CookingtimeThread cookingtimeThread =
+                        new CookingtimeThread(new Handler(),url,Store_arr[position]);
+                cookingtimeThread.start();
+
             }
         });
 
         return view;
+    }
+
+    private class CookingtimeThread extends Thread{
+        public Handler handler;
+        private String Store_Name, result, Url;
+        private String address,Cooking_time;
+        private boolean isDone = false;
+
+        public CookingtimeThread(Handler handler,String Url, String Store_Name){
+            this.handler = handler;
+            this.Store_Name = Store_Name;
+            this.Url = Url;
+        }
+
+        @Override
+        public void run() {
+            super.run();
+
+            OkHttpClient okHttpClient = new OkHttpClient();
+            RequestBody formBody = new FormBody.Builder()
+                    .add("Store_Name", Store_Name)
+                    .add("Menu",MainActivity.menu)
+                    .build();
+
+            Request request = new Request.Builder().url(Url)
+                    .post(formBody)
+                    .build();
+            try {
+                Response response = okHttpClient.newCall(request).execute();
+                result = response.body().string();
+                Log.d("경도/위도/가격/조리시간 구해오기",result);
+                String[] parse = result.split("/");
+                address = parse[0];
+                Cooking_time = parse[1];
+                price = parse[2];
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        //작업이 끝나면 메인 ui 에서 실행한다.
+                        Intent intent = new Intent(getContext(), MainActivity.class);
+                        intent.putExtra("store", store);
+                        intent.putExtra("duration", duration); // 혼잡도. 몇분 더 추가할지
+                        Log.d("혼잡도 시간",duration);
+                        intent.putExtra("address", address);
+                        intent.putExtra("Cooking_time", Cooking_time);
+                        // 한마디로 배달시간은 쿠킹타임+배달시간+혼잡도 지연시간
+                        Log.d("경도위도",Cooking_time+address);
+                        /**
+                         * 결제 정보로 넘길때 혼잡도, 걸리는시간 메뉴 등 정보 다 넣어두기.
+                         */
+                        startActivity(intent);
+                    }
+                });
+
+
+                /**
+                 * 비동기작업이 수행되기때문에 다른 코드들보다 나중에 수행될수 있음.
+                 * 변수들이 null인상태로 들어가게되고 그 다음 run돌아가서 값이 들어갈수있다.
+                 */
+                Log.d("경도/위도/가격/조리시간 구해오기",address);
+                // 한마디로 배달시간은 쿠킹타임+배달시간+혼잡도 지연시간
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
     }
 
 

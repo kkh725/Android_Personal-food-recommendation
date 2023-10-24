@@ -1,0 +1,5 @@
+<resources>
+    <style name="CustomProgressBar">
+        <item name="android:indeterminateDrawable">@drawable/custom_progressbar</item>
+    </style>
+</resources>

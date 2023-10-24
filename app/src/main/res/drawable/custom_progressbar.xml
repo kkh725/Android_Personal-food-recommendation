@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background">
+        <shape
+            android:shape="oval">
+            <solid android:color="@null" /> <!-- 바탕색을 흰색으로 설정 -->
+        </shape>
+    </item>
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape
+                android:shape="oval">
+                <solid android:color="@color/white" /> <!-- 프로그레스 바의 색상을 원하는 색으로 설정 -->
+            </shape>
+        </clip>
+    </item>
+</layer-list>
