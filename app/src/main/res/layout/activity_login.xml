@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearlayout"
@@ -8,66 +8,113 @@
     android:orientation="vertical"
     tools:context=".Login.Login">
 
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginEnd="41dp"
+        android:background="@drawable/icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.11" />
+
     <EditText
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="20dp"
         android:id="@+id/btn_address"
         android:layout_width="363dp"
         android:layout_height="67dp"
+        android:layout_gravity="center"
+        android:layout_marginEnd="411dp"
         android:background="@drawable/button_shape"
         android:hint="주소 설정"
         android:textAlignment="center"
-        android:layout_gravity="center"/>
-
-    <ProgressBar
-        android:id="@+id/progressBar4"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:visibility="invisible" />
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/Et_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape_rectangle"
-        android:textAlignment="center"
-        android:layout_gravity="center"
-        android:layout_marginBottom="20dp"
-        android:hint="아이디" />
-
-    <EditText
-        android:id="@+id/Et_pw"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
         android:layout_gravity="center"
         android:background="@drawable/shape_rectangle"
-        android:layout_marginBottom="20dp"
-        android:hint="패스워드"/>
-
-
+        android:hint="아이디"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.628" />
 
     <Button
         android:id="@+id/btn_login"
         android:layout_width="155dp"
         android:layout_height="38dp"
-        android:background="@drawable/button_shape"
-        android:layout_margin="20dp"
-        android:textAlignment="center"
         android:layout_gravity="center"
-        android:text="로그인" />
+        android:layout_margin="20dp"
+        android:background="@drawable/button_shape"
+        android:text="로그인"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.862" />
 
     <Button
         android:id="@+id/btn_register"
         android:layout_width="155dp"
         android:layout_height="38dp"
-        android:background="@drawable/button_shape"
-        android:textAlignment="center"
         android:layout_gravity="center"
-        android:text="회원가입" />
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_shape"
+        android:text="회원가입"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login"
+        app:layout_constraintVertical_bias="0.096" />
+
+    <EditText
+        android:id="@+id/Et_pw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/shape_rectangle"
+        android:hint="패스워드"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.737" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="371dp"
+        android:layout_height="125dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/ibmplexsanskrregular"
+        android:text="배달이용"
+        android:textAlignment="center"
+        android:textColor="#070707"
+        android:textSize="70dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.399" />
 
 
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

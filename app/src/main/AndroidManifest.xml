@@ -99,6 +99,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -123,7 +124,8 @@
         </activity>
         <activity
             android:name=".Pay_Result.Successful"
-            android:exported="false">
+            android:exported="true">
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

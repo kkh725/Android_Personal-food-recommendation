@@ -31,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="170dp"
+        android:layout_marginBottom="125dp"
         android:layout_marginLeft="20dp">
 
         <ImageView
@@ -39,6 +39,7 @@
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/chicken" />
         <LinearLayout
+
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -116,6 +117,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_marginBottom="110dp"
         android:layout_height="42dp">
 
         <TextView
@@ -146,7 +148,6 @@
         android:id="@+id/tv_time_guide"
         android:layout_width="match_parent"
         android:layout_height="78dp"
-        android:layout_marginTop="25dp"
         android:text="귀가 시간에 알맞게 배달 받을 수 있어요"
         android:textSize="20dp"
         android:textColor="@color/black"

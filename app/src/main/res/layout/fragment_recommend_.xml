@@ -29,7 +29,7 @@
     <ListView
         android:id="@+id/list"
         android:layout_width="match_parent"
-        android:layout_height="677dp"
+        android:layout_height="660dp"
         android:divider="@null"
         android:dividerHeight="10px"
         android:drawSelectorOnTop="false" />

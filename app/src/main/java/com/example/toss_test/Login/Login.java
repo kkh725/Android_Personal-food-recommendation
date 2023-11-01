@@ -79,7 +79,7 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        LinearLayout layout = findViewById(R.id.linearlayout);
+        ConstraintLayout layout = findViewById(R.id.linearlayout);
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -150,7 +150,6 @@ public class Login extends AppCompatActivity {
 
         }
 
-        progressBar = findViewById(R.id.progressBar4);
 
         btn_login = findViewById(R.id.btn_login);
         btn_register = findViewById(R.id.btn_register);
@@ -296,9 +295,10 @@ public class Login extends AppCompatActivity {
             }
             /**
              * 백그라운드에서 수행할 작업. 비동기
+             * 로그인 5초대기
              */
             try {
-                Thread.sleep(5000);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -337,7 +337,7 @@ public class Login extends AppCompatActivity {
             customLoadingDialog.dismiss(); // 로딩 완료
             Intent intent_toOrder = new Intent(Login.this, Basic_Recommend.class);
             startActivity(intent_toOrder);
-            Toast.makeText(Login.this, "로그인"+Member_key, Toast.LENGTH_SHORT).show();
+            Toast.makeText(Login.this, "로그인 성공!", Toast.LENGTH_SHORT).show();
         }
     }
 }

@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.example.toss_test.Pay_Result.Failure;
 import com.example.toss_test.Pay_Result.Successful;
+import com.example.toss_test.Recommend.Basic_Recommend;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -134,6 +135,9 @@ public class MainActivity2 extends AppCompatActivity {
                                 Log.d("day",Day);
                                 Log.d("member",Member_key);
                                 Toast.makeText(MainActivity2.this,"데이터베이스에 저장완료 !", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(MainActivity2.this, Basic_Recommend.class);
+                                startActivity(intent);
+                                finish();
                             } catch (ExecutionException e) {
                                 e.printStackTrace();
                             } catch (InterruptedException e) {

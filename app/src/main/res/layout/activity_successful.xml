@@ -41,11 +41,13 @@
         android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="85dp"
-        android:layout_marginEnd="86dp"
-        android:layout_marginBottom="36dp"
-        android:progressTint="#FFEB3B"
+        android:layout_marginStart="82dp"
+        android:layout_marginEnd="89dp"
+        android:layout_marginBottom="45dp"
+        android:progressTint="#DA1717"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

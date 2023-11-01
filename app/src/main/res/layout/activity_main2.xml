@@ -15,27 +15,27 @@
 
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="200dp"
+        android:layout_marginBottom="100dp"
         android:gravity="center"/>
 
     <TextView
         android:id="@+id/text_Store"
-        android:layout_width="201dp"
+        android:layout_width="285dp"
         android:layout_height="48dp"
-        android:hint="가게명"
-        android:text="비비큐"
-
         android:layout_gravity="center"
         android:layout_margin="20dp"
-        android:gravity="center"/>
+        android:background="@drawable/shape_rectangle"
+        android:gravity="center"
+        android:hint="가게명"
+        android:text="비비큐" />
 
     <TextView
         android:id="@+id/text_Type"
-        android:layout_width="201dp"
+        android:layout_width="285dp"
         android:layout_height="48dp"
         android:hint="음식종류"
         android:text="치킨"
-
+        android:background="@drawable/shape_rectangle"
         android:layout_gravity="center"
         android:layout_margin="20dp"
         android:gravity="center"/>
@@ -43,9 +43,9 @@
 
     <TextView
         android:id="@+id/Tv_Menu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
+        android:layout_width="285dp"
+        android:layout_height="48dp"
+        android:background="@drawable/shape_rectangle"
         android:layout_gravity="center"
         android:layout_margin="20dp"
         android:gravity="center"
@@ -53,9 +53,9 @@
 
     <TextView
         android:id="@+id/tv_amount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
+        android:layout_width="285dp"
+        android:layout_height="48dp"
+        android:background="@drawable/shape_rectangle"
         android:layout_gravity="center"
         android:layout_margin="20dp"
         android:gravity="center"
@@ -63,18 +63,19 @@
 
     <TextView
         android:id="@+id/tv_time"
-        android:layout_width="237dp"
-        android:layout_height="wrap_content"
+        android:layout_width="285dp"
+        android:layout_height="48dp"
         android:layout_gravity="center"
         android:layout_margin="20dp"
         android:gravity="center"
+        android:background="@drawable/shape_rectangle"
         android:text="결제 시각" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+    android:background="@drawable/button_shape"
         android:layout_gravity="center"
         android:layout_margin="20dp"
         android:gravity="center"

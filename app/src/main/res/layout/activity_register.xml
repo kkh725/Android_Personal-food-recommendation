@@ -8,87 +8,89 @@
 
     <EditText
         android:id="@+id/Et_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="99dp"
-        android:layout_marginTop="90dp"
-        android:layout_marginEnd="102dp"
-        android:ems="10"
+        android:layout_width="285dp"
+        android:layout_height="48dp"
+        android:layout_margin="1dp"
+        android:layout_marginTop="120dp"
         android:background="@drawable/shape_rectangle"
+        android:ems="10"
+        android:fontFamily="@font/ibmplexsanskrregular"
         android:hint="  이름"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+        app:layout_constraintVertical_bias="0.374" />
+
+    <EditText
+        android:id="@+id/et_residence"
+        android:layout_width="285dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/shape_rectangle"
+        android:ems="10"
+        android:fontFamily="@font/ibmplexsanskrregular"
+        android:hint="  거주지 - 예) 서울시"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/Spinner_age" />
+
+    <EditText
+        android:id="@+id/et_address"
+        android:layout_width="285dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/shape_rectangle"
+        android:ems="10"
+        android:fontFamily="@font/ibmplexsanskrregular"
+        android:hint="  주소 입력"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_residence" />
 
     <Spinner
-
+        android:background="@drawable/shape_rectangle"
         android:id="@+id/Spinner_age"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
+        android:layout_width="285dp"
+        android:layout_height="42dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="1dp"
+        android:fontFamily="@font/ibmplexsanskrregular"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Et_name" />
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="151dp"
-        android:layout_marginTop="49dp"
-        android:layout_marginEnd="151dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Spinner_age">
-
-        <RadioButton
-            android:id="@+id/radio_male"
-
-            android:layout_width="95dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shape_rectangle"
-            android:text="남성" />
-
-        <RadioButton
-            android:id="@+id/radio_female"
-            android:layout_width="95dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/shape_rectangle"
-            android:text="여성" />
-    </RadioGroup>
-
-    <EditText
-        android:id="@+id/et_residence"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="47dp"
-        android:layout_marginEnd="101dp"
-        android:ems="10"
-        android:hint="  거주지 - 예) 서울시"
+    <RadioButton
+        android:id="@+id/radio_male"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
         android:background="@drawable/shape_rectangle"
-        android:inputType="textPersonName"
+        android:fontFamily="@font/ibmplexsanskrregular"
+        android:text="남성"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.298"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+        app:layout_constraintTop_toBottomOf="@+id/et_address"
+        app:layout_constraintVertical_bias="0.103" />
 
-    <EditText
-        android:id="@+id/et_address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="69dp"
-        android:layout_marginEnd="72dp"
-        android:layout_marginBottom="34dp"
+    <RadioButton
+        android:id="@+id/radio_female"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
         android:background="@drawable/shape_rectangle"
-        android:ems="10"
-        android:hint="  주소 입력"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/btn_complete"
+        android:fontFamily="@font/ibmplexsanskrregular"
+        android:text="여성"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.298"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radio_male"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btn_complete"
@@ -96,12 +98,39 @@
         android:layout_height="58dp"
         android:layout_marginStart="166dp"
         android:layout_marginEnd="157dp"
-        android:layout_marginBottom="71dp"
+        android:layout_marginBottom="24dp"
         android:background="@drawable/button_shape"
+        android:fontFamily="@font/ibmplexsanskrregular"
         android:text="완료"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.589"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="151dp"
+        android:layout_marginEnd="151dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </RadioGroup>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="256dp"
+        android:layout_height="189dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.057"
+        app:srcCompat="@drawable/icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
