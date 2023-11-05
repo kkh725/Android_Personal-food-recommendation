@@ -152,7 +152,7 @@ public class HttpWebSocket {
         @Override //소켓 열릴때 작동 웹소켓 정보와 응답 확인
         public void onOpen(@NotNull WebSocket webSocket, @NotNull okhttp3.Response response) {
             super.onOpen(webSocket, response);
-            Log.d("TLOG", "전송 데이터 확인 : " + webSocket + " : " + response);
+            Log.d("소비자어플 소켓 정보", "웹소켓 고유 아이디 확인 : " + webSocket );
         }
     };
 

@@ -82,7 +82,9 @@ public class MainActivity extends AppCompatActivity {
         Naver_API naver_api = new Naver_API();
         String time = naver_api
                 .duration_distance(store_address,"127.286463624484, 36.6160243207095")[0].toString(); //가게에서부터 내집까지. 신안리 354-2
-        Log.d("time",time);
+        Log.d("가게 -> 신안리 354-2 소요시간",time);
+        Log.d("'착한 돈가스 세트' 조리시간",Cooking_time+"분");
+        Log.d("실시간 이백장돈가스 세종조치원점 지연시간",duration);
 
 
         /**
@@ -95,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         int i_time = Integer.parseInt(time.replace("분",""));
         int i_cooking_time = Integer.parseInt(Cooking_time);
         String result_time = String.valueOf((i_duration2+i_time+i_cooking_time));
-        Log.d("최종",result_time+"///"+duration+"//"+time+"//"+Cooking_time);
+        Log.d("최종","가게->집 : "+duration+"/ 혼잡도 지연시간 : "+time+"/ 조리시간 : "+Cooking_time+"분\n최종 배달시간 "+result_time);
 
         tv_duration.setText(String.format("약 %s", result_time)+"분");
 

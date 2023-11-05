@@ -61,7 +61,7 @@ public class Recommend_Fragment extends Fragment {
          */
         Naver_API naver_api = new Naver_API();
         String home_location = naver_api.geocode(tv_address.getText().toString());
-        Log.d("도착지점 좌표",home_location);
+        Log.d("현재위치에서 집까지의 거리 계산","집주소 : "+tv_address.getText().toString()+"\n      집주소를 좌표로 변환 : "+home_location);
 
         /**
          * 사용자의 현재 location 사용하기.
@@ -75,9 +75,9 @@ public class Recommend_Fragment extends Fragment {
 
         // 실시간 위치에서부터 집까지의 시간 계산하기.
 
-        String start_location = "127.2646, 36.4851"; //어딘지 모르겠음
+        String start_location = "127.2646, 36.4851"; //어딘지 모르겠음 보람동 어딘가.
         to_home_text = naver_api.duration_distance(start_location,home_location)[0].toString();
-        Log.d("거리 시간",to_home_text);
+        Log.d("현재위치에서 집까지의 거리 계산","gps로 측정한 현재 위치 좌표 : "+start_location+"\n      최종 현재위치에서 집까지 소요되는 예상시간 : "+to_home_text);
 
 
 //      to_home_text = naver_api.duration_distance();

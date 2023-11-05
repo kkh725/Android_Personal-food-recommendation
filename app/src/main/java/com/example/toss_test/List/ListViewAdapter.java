@@ -29,8 +29,12 @@ public class ListViewAdapter extends BaseAdapter {
     }
 
     // position에 위치한 데이터를 화면에 출력하는데 사용될 View를 리턴. : 필수 구현
+    //리스트 형태의 데이터와 리스트를 배치하는 view 와의 중계 역할. 필수로 구현해야한다. 자동으로 호출되어 각 항목의 뷰를 가져와 화면에 표시한다.
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        // convertView: 재활용할 뷰 (null일 경우 새로 생성)
+        // parent: 리스트뷰 자체
         final int pos = position;
         final Context context = parent.getContext();
 

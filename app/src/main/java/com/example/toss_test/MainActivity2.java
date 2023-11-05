@@ -84,7 +84,7 @@ public class MainActivity2 extends AppCompatActivity {
         TextView Et_Store = findViewById(R.id.text_Store);
         Et_Store.setText(store);
         TextView Et_Type = findViewById(R.id.text_Type);
-        Et_Type.setText("typetypetype");
+        Et_Type.setText("중식");
 
 
 /**
