@@ -20,7 +20,7 @@ listview를 사용하여 시간/요일이 달라짐에 따라 각자 다른 추�
 그 후 웹소켓을 활용하여 소비자<->사장님 어플의 실시간 양방향 통신이 가능하게하였습니다.
 
 ## 로그인화면
-<img width="385" alt="image" src="https://github.com/kkh725/Android_Personal-food-recommendation/assets/120651330/72687e3c-48a8-4cc2-87c2-8539a3040570">
+<img width="354" alt="image" src="https://github.com/kkh725/Android_Personal-food-recommendation/assets/120651330/b940668f-cffe-4703-8e45-dc37c9a0d16e">
 
 ## 추천 진행화면
 <img width="353" alt="image" src="https://github.com/kkh725/Android_Personal-food-recommendation/assets/120651330/24726aaa-5fd3-471e-8e6e-78e2f8c06a64">
