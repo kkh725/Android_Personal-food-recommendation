@@ -23,11 +23,13 @@ listview를 사용하여 시간/요일이 달라짐에 따라 각자 다른 추�
 <img width="354" alt="image" src="https://github.com/kkh725/Android_Personal-food-recommendation/assets/120651330/b940668f-cffe-4703-8e45-dc37c9a0d16e">
 
 ## 추천 진행화면
-<img width="340" alt="스크린샷 2024-01-08 오후 5 16 03" src="https://github.com/kkh725/Android_Personal-food-recommendation/assets/120651330/70aa896b-614d-479f-b083-c24c96b6eae0">
+<img width="370" alt="image" src="https://github.com/kkh725/Android_Personal-food-recommendation/assets/120651330/863e0508-9e79-4db9-8fc5-ffc929a66f77">
+
+
 
 
 ## 추천화면 
-<img width="394" alt="스크린샷 2023-10-22 오후 7 42 07" src="https://github.com/kkh725/Android_Personal-food-recommendation/assets/120651330/f752529f-affd-4790-86ff-04f9d02e46d3">
+<img width="340" alt="스크린샷 2024-01-08 오후 5 16 03" src="https://github.com/kkh725/Android_Personal-food-recommendation/assets/120651330/70aa896b-614d-479f-b083-c24c96b6eae0">
 
 ## 웹소켓을 활용한 실시간 혼잡도 반영 
 ----------
